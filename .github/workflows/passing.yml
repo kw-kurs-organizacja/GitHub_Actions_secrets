@@ -42,14 +42,25 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > NAZWA_PLIKU_Z_WYNIKIEM
+          expr 3 + 7 > out.txt
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: out
+          path: out.txt
 
   job_2:
     name: Multiply by 9
     needs: job_1
     runs-on: windows-latest
     steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v6.0.0
+        with:
+          name: out
+          path: out.txt
+          
       - shell: bash
         run: |
-          value=`cat NAZWA_PLIKU_Z_ARTEFAKTU`
+          value=`cat out.txt`
           echo $(expr $value \* 9) 
