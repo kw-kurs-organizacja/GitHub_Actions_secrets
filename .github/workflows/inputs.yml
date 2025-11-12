@@ -10,6 +10,18 @@ on:
           - warning
           - debug
         default: warning
+      job_matrix:
+        type: string
+        default: |
+          {
+            "matrix": {
+              "version": [10,12,14],
+              "os": [
+                "ubuntu-latest",
+                "windows-latest"
+              ]
+            }
+          }
       environment:
         type: environment
 
@@ -18,9 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 2
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu-latest, windows-latest]
+      matrix: ${{ fromJSON(inputs.job_matrix) }}
     steps:
     - run: |
         echo "Log level: $LEVEL"
