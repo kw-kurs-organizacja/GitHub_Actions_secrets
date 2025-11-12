@@ -25,6 +25,8 @@ jobs:
         id: sentence_maker
         run: |
           echo "SENTENCE='Dobry ranek' >> $GITHUB_OUTPUT"
+    outputs:
+      sentence: ${{ steps.sentence_maker.outputs.SENTENCE }}
 
   consumer:
     needs: [producer]
@@ -32,7 +34,7 @@ jobs:
     steps:
       - name: Print the message
         run: |
-          echo ${{ needs.producer.outputs.SENTENCE }}
+          echo ${{ needs.producer.outputs.sentence }}
 
   job_1:
     name: Add 3 and 7
