@@ -40,6 +40,6 @@ jobs:
     steps:
       - name: Use variables in display-variables2
         run: |
-          echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR"
-          echo "NIE powinna być zmienna w scopie joba:$JOB_VAR"
-          echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR"
+          echo "Powinna być zmienna w scopie workflow:${{ env.WORKFLOW_VAR }}"
+          echo "NIE powinna być zmienna w scopie joba:${{ env.JOB_VAR}}"
+          echo "NIE powinna być zmienna w scopie stepu:${{ env.STEP_VAR}}"
