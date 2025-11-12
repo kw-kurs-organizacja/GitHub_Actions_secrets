@@ -14,7 +14,7 @@ on:
         type: string
         default: |
           {
-            "version": [10,12,14],
+            "version": [10,12],
             "os": [
               "ubuntu-latest",
               "windows-latest"
@@ -34,6 +34,7 @@ jobs:
         echo "Log level: $LEVEL"
         echo "Tags: $TAGS"
         echo "Environment: $ENVIRONMENT"
+      name: "${{ matrix.os }} ${{ matrix.version }}"
       env:
         LEVEL: ${{ inputs.logLevel }}
         TAGS: ${{ inputs.tags }}
