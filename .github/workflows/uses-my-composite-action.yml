@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: kw-kurs-organizacja/GitHub_Actions_secrets/my-composite-action@main
+        uses: kw-kurs-organizacja/GitHub_Actions_secrets/.github/actions@main
         with:
           who-to-greet: Krzysztof
       - run: echo random-number "$RANDOM_NUMBER"
