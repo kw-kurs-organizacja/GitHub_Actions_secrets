@@ -24,7 +24,7 @@ jobs:
       - name: Make a sentence
         id: sentence_maker
         run: |
-          echo "SENTENCE='Dobry ranek' >> $GITHUB_OUTPUT"
+          echo "SENTENCE='Dobry ranek'" >> $GITHUB_OUTPUT
     outputs:
       sentence: ${{ steps.sentence_maker.outputs.SENTENCE }}
 
